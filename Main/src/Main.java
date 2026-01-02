@@ -77,6 +77,6 @@ public class Main {
             out.println("\nName: " + name + "\nBirth date: " + birth +  "\nContact number " + contact + " \nmovie: " + movieName + "\nTime: " + time + "\nAmount of tickets: " + tickets +"\nTotal amount: " + " ₱" + ticksum);
             out.print("=====Enjoy your movie!=====");
         } catch (Exception e)
-        {out.print("");}
+        {out.print("Test");}
     }
 }
