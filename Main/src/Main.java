@@ -47,7 +47,7 @@ public class Main {
             	System.out.print("\n === Thank you for visiting Stevens little theatre!!, please come again!!!===");
             	break;
             	default:
-            	System.out.print("The vpid is coming.");
+            	System.out.print("The void is coming.");
             	
             	
   
