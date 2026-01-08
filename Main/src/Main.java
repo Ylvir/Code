@@ -1,7 +1,6 @@
 import java.util.*;
 public class Main {
 	static Scanner sc = new Scanner (System.in);
-	//diri dampi gid na buangan ko pwede lang gali butang di mga scanner para ma dala sa new methods gamay, basta by 9 guro tapos nako aight aight kita lang duwa HAHAHAHAHAHA 
 	
 	
 	static String[] movies = { "Barbie land",
@@ -30,8 +29,14 @@ public class Main {
             System.out.println("3. Exit");
             System.out.print("Choose option: ");
 
-           choice =  sc.nextInt();
-           
+          try {
+        choice = sc.nextInt();
+    } catch (InputMismatchException e) {
+        System.out.println("\nInvalid input. Please enter a number.\n");
+        sc.nextLine();
+        choice = 0;
+       continue;
+    }
             switch (choice)
             {
             	
@@ -47,7 +52,7 @@ public class Main {
             	System.out.print("\n === Thank you for visiting Stevens little theatre!!, please come again!!!===");
             	break;
             	default:
-            	System.out.print("The void is coming.");
+            	System.out.print("\n Invalid input.\n Please choose a number between 1 and 3\n");
             	
             	
   
@@ -95,22 +100,29 @@ public class Main {
 	static int selectMovie() {
 			 	  int choice;
  	 	
-			 	System.out.print("\n== MOVIE SELECTION ==\n");
+			 while(true){	System.out.print("\n== MOVIE SELECTION ==\n");
 
 			for (int x = 0; x < movies.length; x++)
 			System.out.println((x + 1)+ "." + " " +movies[x] );  
 			
-			  // Ask user to choose a movie
+			
       System.out.print("Select movie: ");
+      try{
         choice = sc.nextInt();
-       sc.nextLine();
-
+        sc.nextLine();
         if (choice >= 1 && choice <= movies.length) {
-            return choice - 1;
+                return choice - 1;}
+        else
+        {System.out.println("Enter number between 1 to 5");
         }
-
-        System.out.println("Invalid movie Defaulting to first.");
-        return 0;
+        
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. please use Numbers only.");
+         sc.nextLine();
+        }
+       
+ 
+			 }
     }
     
     
@@ -118,38 +130,52 @@ public class Main {
     //TIMEEEEEE
       static int selectTime() {
     int choice;
-    System.out.println("\n=== TIME SLOTS ===");
+   while(true) {System.out.println("\n=== TIME SLOTS ===");
     for (int i = 0; i < times.length; i++) {
         System.out.println((i + 1) + ". " + times[i]);
     }
 
     System.out.print("Select time: ");
-    choice = sc.nextInt();
+    
+   try { choice = sc.nextInt();
     sc.nextLine(); 
 
     if (choice >= 1 && choice <= times.length) {
-        System.out.println("You selected time: " + times[choice - 1]);
+       
         return choice - 1;
-    }
+    } else{
 
-    System.out.println("Invalid time. Defaulting to first.");
-    return 0;
+    System.out.println("Invalid time. Please pick between 1 to 4");}
+   }  catch (InputMismatchException e) {
+            System.out.println("Invalid input. please use Numbers only.");
+         sc.nextLine();
+        }
+    }
 }
+
+
     //moneyyy
     static int selectTickets() {
     int tickets;
 
-    System.out.print("Select number of tickets: ");
+  while(true)  {System.out.print("Select number of tickets: ");
+    try{
     tickets = sc.nextInt();
-    sc.nextLine(); // consume newline
+    sc.nextLine(); 
 
     if (tickets > 0) {
         return tickets;
+    } else 
+     { System.out.println("\nInvalid ticket amount. Please input tickect amount greater than 0\n");}
+     
+    }catch (InputMismatchException e) {
+            System.out.println("Invalid input. please use Numbers only.");
+         sc.nextLine();
+        }
+}
     }
 
-    System.out.println("Invalid ticket amount. Defaulting to 1 ticket.");
-    return 1;
-}
+
         static void printReceipt(String name, String contact, int movie, int time, int tickets, int total) {
         System.out.println("\n=== BOOKING INFORMATION (POS RECEIPT) ===");
         System.out.println("Customer: " + name);
@@ -162,4 +188,3 @@ public class Main {
         System.out.println("Date of purchase: 1/3/26");
         System.out.println("======================================");
     }
-}
